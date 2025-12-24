@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>تقدير نواتج الطرح (الصف الثالث)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap');
+    *{font-family:"Tajawal",system-ui,sans-serif}
+    .card{box-shadow:0 18px 60px rgba(15,23,42,.12)}
+    .btn{border-radius:18px;font-weight:800;padding:14px 18px}
+    .chip{border-radius:999px;padding:6px 12px;font-weight:800;font-size:13px}
+    .digit-box{border-width:4px;border-radius:18px;min-width:92px;min-height:84px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:42px;background:#fff}
+    .choice{border-radius:18px;border-width:2px;padding:14px 14px;font-weight:800;cursor:pointer;user-select:none}
+    .choice:hover{transform:translateY(-1px)}
+    .shake{animation:shake .35s ease-in-out}
+    @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(6px)}50%{transform:translateX(-6px)}75%{transform:translateX(4px)}}
+    .pop{animation:pop .35s ease-in-out}
+    @keyframes pop{0%{transform:scale(.98)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
+    @media(max-width:640px){
+      .digit-box{min-width:82px;min-height:74px;font-size:38px}
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-amber-50 via-white to-purple-50">
+  <div class="max-w-5xl mx-auto px-4 py-6">
+    <!-- Header -->
+    <div class="bg-white/90 backdrop-blur rounded-3xl card p-6 border border-amber-100">
+      <div class="text-center">
+        <div class="text-2xl md:text-3xl font-extrabold text-slate-800">تَقْدِيرُ نَوَاتِجِ الطَّرْح</div>
+
+        <div class="mt-2 inline-block rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3">
+          <div class="font-extrabold text-emerald-800">فِكْرَةُ الدَّرْسِ</div>
+          <div class="text-slate-700 font-bold mt-1">أُقَدِّرُ ناتِجَ الطَّرْحِ مُسْتَعْمِلًا التَّقْرِيبَ أو الأَعْدَادَ المُتَنَاغِمَة.</div>
+        </div>
+
+        <div class="mt-2 text-slate-600">
+          لا أحتاج جوابًا دقيقًا، بل جوابًا قريبًا يساعدني على فحص المعقولية بسرعة.
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-2 justify-center">
+        <button id="tab-learn" class="btn bg-pink-600 text-white">تعلم</button>
+        <button id="tab-examples" class="btn bg-white text-slate-700 border-2 border-pink-200">أمثلة محلولة</button>
+        <button id="tab-practice" class="btn bg-white text-slate-700 border-2 border-pink-200">تدرب</button>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <!-- Learn -->
+      <section id="section-learn" class="bg-white rounded-3xl card p-6 border border-amber-100">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="rounded-2xl p-5 bg-pink-50 border border-pink-100">
+            <div class="font-extrabold text-lg text-slate-800 mb-2">١) التقدير بالتقريب (لأقرب عشرة)</div>
+            <div class="text-slate-700 leading-7">
+              <ul class="list-decimal pr-6">
+                <li>أقرب العددين لأقرب عشرة.</li>
+                <li>أطرح العددين بعد التقريب.</li>
+                <li>أحصل على تقدير قريب من الناتج.</li>
+              </ul>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span class="chip bg-white border border-pink-200 text-slate-700">تقريب</span>
+                <span class="chip bg-white border border-pink-200 text-slate-700">أقرب عشرة</span>
+                <span class="chip bg-white border border-pink-200 text-slate-700">تقدير</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl p-5 bg-purple-50 border border-purple-100">
+            <div class="font-extrabold text-lg text-slate-800 mb-2">٢) الأعداد المتناغمة</div>
+            <div class="text-slate-700 leading-7">
+              أختار أعدادًا قريبة تجعل الطرح أسهل.
+              مثال: ٧٣ − ٢٨ تقريبًا ٧٠ − ٣٠.
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span class="chip bg-white border border-purple-200 text-slate-700">متناغمة</span>
+                <span class="chip bg-white border border-purple-200 text-slate-700">قريبة</span>
+                <span class="chip bg-white border border-purple-200 text-slate-700">أسهل</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 rounded-2xl p-5 bg-slate-50 border border-slate-200">
+          <div class="font-extrabold text-slate-800 mb-2">متى أستخدم التقدير؟ ✅</div>
+          <ul class="list-disc pr-6 text-slate-700 leading-7">
+            <li>للتأكد أن الإجابة <b>معقولة</b>.</li>
+            <li>عندما أريد جوابًا سريعًا قريبًا من الصحيح.</li>
+            <li>قبل الحساب الدقيق لأتوقع الناتج.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Examples -->
+      <section id="section-examples" class="hidden bg-white rounded-3xl card p-6 border border-amber-100">
+        <div class="flex items-center justify-between flex-wrap gap-2 mb-4">
+          <div class="font-extrabold text-xl text-slate-800">أمثلة محلولة</div>
+          <div class="text-sm text-slate-500">اضغطي لعرض الشرح</div>
+        </div>
+        <div id="examplesList" class="grid md:grid-cols-2 gap-4"></div>
+      </section>
+
+      <!-- Practice -->
+      <section id="section-practice" class="hidden bg-white rounded-3xl card p-6 border border-amber-100">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div class="font-extrabold text-xl text-slate-800">تدرب: اختاري التقدير الصحيح</div>
+            <div class="text-slate-600">اختاري الطريقة ثم اختاري التقدير الأقرب لناتج الطرح.</div>
+          </div>
+          <div class="rounded-2xl bg-slate-50 border border-slate-200 px-4 py-3">
+            <div class="font-bold text-slate-700">النتيجة</div>
+            <div class="text-slate-700">⭐ <span id="score">٠</span> / <span id="total">٠</span></div>
+          </div>
+        </div>
+
+        <div class="mt-4 flex flex-wrap gap-3 items-center justify-center">
+          <label class="font-bold text-slate-700">الطريقة:</label>
+          <select id="method" class="btn bg-white border-2 border-slate-200 text-slate-700">
+            <option value="round10">التقريب لأقرب عشرة</option>
+            <option value="harmonic">الأعداد المتناغمة</option>
+          </select>
+
+          <label class="font-bold text-slate-700">المستوى:</label>
+          <select id="level" class="btn bg-white border-2 border-slate-200 text-slate-700">
+            <option value="2d">عددين من رقمين</option>
+            <option value="3d">عددين من ٣ أرقام</option>
+          </select>
+
+          <button id="btnNew" class="btn bg-purple-600 text-white">سؤال جديد</button>
+          <button id="btnShow" class="btn bg-white border-2 border-purple-200 text-slate-700">أظهر الشرح</button>
+        </div>
+
+        <div class="mt-6 grid lg:grid-cols-2 gap-6 items-start">
+          <!-- Problem -->
+          <div class="rounded-3xl border border-pink-100 bg-gradient-to-b from-white to-pink-50 p-5">
+            <div class="flex items-center justify-between mb-3">
+              <div class="font-extrabold text-slate-800">المسألة</div>
+              <div id="badge" class="chip bg-white border border-pink-200 text-slate-700">—</div>
+            </div>
+
+            <div id="problemArea" class="flex flex-col items-center gap-4"></div>
+
+            <div class="mt-4">
+              <div class="font-extrabold text-slate-800 text-center mb-2">اختاري التقدير الصحيح:</div>
+              <div id="choices" class="grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
+            </div>
+          </div>
+
+          <!-- Feedback -->
+          <div class="rounded-3xl border border-slate-200 bg-white p-5">
+            <div class="font-extrabold text-slate-800 mb-2">التغذية الراجعة والشرح</div>
+            <div id="feedback" class="text-slate-700 leading-7">
+              اختاري أحد الخيارات ليتحقق التطبيق من إجابتك.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-8 text-center text-slate-600">
+      <div class="bg-white/80 inline-block px-4 py-3 rounded-2xl border border-slate-200">
+        <span class="font-bold">أ/ فاطمة هزازي</span> • ملتقى معلمي ومعلمات الرياضيات • الملتقى التفاعلي
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Arabic digits
+    const ar = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+    const toArabic = (n) => {
+      if (!Number.isFinite(n)) return '';
+      return String(Math.trunc(n)).split('').map(ch=>{
+        if (ch==='-') return '−';
+        const d = ch.charCodeAt(0)-48;
+        return (d>=0 && d<=9) ? ar[d] : ch;
+      }).join('');
+    };
+
+    // Tabs
+    const tabs = [
+      {btn:'tab-learn', sec:'section-learn'},
+      {btn:'tab-examples', sec:'section-examples'},
+      {btn:'tab-practice', sec:'section-practice'}
+    ];
+    function setTab(activeBtnId){
+      tabs.forEach(t=>{
+        const b=document.getElementById(t.btn);
+        const s=document.getElementById(t.sec);
+        const active = t.btn===activeBtnId;
+        s.classList.toggle('hidden', !active);
+        b.className = active ? 'btn bg-pink-600 text-white' : 'btn bg-white text-slate-700 border-2 border-pink-200';
+      });
+    }
+    document.getElementById('tab-learn').onclick=()=>setTab('tab-learn');
+    document.getElementById('tab-examples').onclick=()=>setTab('tab-examples');
+    document.getElementById('tab-practice').onclick=()=>setTab('tab-practice');
+
+    // Helpers
+    const randInt=(min,max)=>Math.floor(Math.random()*(max-min+1))+min;
+    const round10=(n)=> {
+      const ones = n%10;
+      const base = n-ones;
+      return ones>=5 ? base+10 : base;
+    };
+
+    // Generate subtraction problems: ensure a>=b
+    function genProblem(level){
+      let a,b;
+      if (level==='2d'){
+        a = randInt(20, 99);
+        b = randInt(10, 89);
+      } else {
+        a = randInt(120, 999);
+        b = randInt(100, 899);
+      }
+      if (b>a) [a,b]=[b,a];
+      // avoid too tiny differences for 3-digit sometimes
+      if (level==='3d' && (a-b) < 30){
+        b = Math.max(0, a - randInt(30, 250));
+      }
+      return {a,b, exact: a-b};
+    }
+
+    // Harmonic estimate: make easy by adjusting to nearest ten (but with "friendly" tens)
+    function harmonicEstimate(a,b){
+      // choose a' as nearest ten of a (or a rounded down/up to multiple of 10)
+      const a10 = round10(a);
+      const b10 = round10(b);
+      // Sometimes make b' closer to end with 0
+      // We'll use the same as rounding but call it harmonic with friendly numbers
+      return {aH:a10, bH:b10, est:a10-b10};
+    }
+
+    // Build explanation HTML
+    function explain(q, method){
+      if (method==='round10'){
+        const arA = round10(q.a), arB = round10(q.b), est = arA - arB;
+        return `
+          <div class="text-slate-700 leading-8">
+            <div class="font-extrabold text-slate-800 mb-2">التقريب لأقرب عشرة</div>
+            <div>نقرّب:</div>
+            <div class="mt-1">• ${toArabic(q.a)} → <b class="text-purple-700">${toArabic(arA)}</b></div>
+            <div>• ${toArabic(q.b)} → <b class="text-purple-700">${toArabic(arB)}</b></div>
+            <div class="mt-2">ثم نطرح:</div>
+            <div dir="ltr"><b>${toArabic(arA)} − ${toArabic(arB)} = ${toArabic(est)}</b></div>
+            <div class="mt-2 text-slate-600">إذن التقدير ≈ <b>${toArabic(est)}</b></div>
+          </div>
+        `;
+      } else {
+        const h = harmonicEstimate(q.a,q.b);
+        return `
+          <div class="text-slate-700 leading-8">
+            <div class="font-extrabold text-slate-800 mb-2">الأعداد المتناغمة</div>
+            <div>نختار أعدادًا قريبة تسهّل الطرح:</div>
+            <div class="mt-1">• ${toArabic(q.a)} ≈ <b class="text-purple-700">${toArabic(h.aH)}</b></div>
+            <div>• ${toArabic(q.b)} ≈ <b class="text-purple-700">${toArabic(h.bH)}</b></div>
+            <div class="mt-2">ثم نطرح الأعداد المتناغمة:</div>
+            <div dir="ltr"><b>${toArabic(h.aH)} − ${toArabic(h.bH)} = ${toArabic(h.est)}</b></div>
+            <div class="mt-2 text-slate-600">إذن التقدير ≈ <b>${toArabic(h.est)}</b></div>
+          </div>
+        `;
+      }
+    }
+
+    // Examples section
+    const examples = [
+      {
+        title:'مثال ١ (تقريب لأقرب عشرة)',
+        a: 73, b: 28,
+        render: () => {
+          const arA=round10(73), arB=round10(28), est=arA-arB;
+          return `
+            <div class="text-slate-700 leading-8">
+              <div><b>المسألة:</b> ${toArabic(73)} − ${toArabic(28)}</div>
+              <div class="mt-2"><b>نقرّب:</b> ${toArabic(73)} → ${toArabic(arA)} ، ${toArabic(28)} → ${toArabic(arB)}</div>
+              <div><b>التقدير:</b> <span dir="ltr">${toArabic(arA)} − ${toArabic(arB)} =</span> <b class="text-purple-700">${toArabic(est)}</b></div>
+            </div>`;
+        }
+      },
+      {
+        title:'مثال ٢ (أعداد متناغمة)',
+        a: 154, b: 69,
+        render: () => {
+          const h=harmonicEstimate(154,69);
+          return `
+            <div class="text-slate-700 leading-8">
+              <div><b>المسألة:</b> ${toArabic(154)} − ${toArabic(69)}</div>
+              <div class="mt-2"><b>نختار أعدادًا قريبة:</b> ${toArabic(154)} ≈ ${toArabic(h.aH)} ، ${toArabic(69)} ≈ ${toArabic(h.bH)}</div>
+              <div><b>التقدير:</b> <span dir="ltr">${toArabic(h.aH)} − ${toArabic(h.bH)} =</span> <b class="text-purple-700">${toArabic(h.est)}</b></div>
+            </div>`;
+        }
+      }
+    ];
+
+    function renderExamples(){
+      const container = document.getElementById('examplesList');
+      container.innerHTML='';
+      examples.forEach((ex, idx)=>{
+        const el=document.createElement('div');
+        el.className='rounded-3xl border border-slate-200 bg-slate-50 p-5 cursor-pointer hover:shadow-lg transition';
+        el.innerHTML=`
+          <div class="font-extrabold text-slate-800 mb-2">${ex.title}</div>
+          <div class="text-slate-700">${toArabic(ex.a)} − ${toArabic(ex.b)}</div>
+          <div id="ex-${idx}" class="hidden mt-4 rounded-2xl bg-white border border-slate-200 p-4"></div>
+          <div class="mt-3 text-sm text-pink-600 font-bold">اضغطي لعرض/إخفاء الشرح</div>
+        `;
+        el.onclick=()=>{
+          const box=document.getElementById(`ex-${idx}`);
+          const open=!box.classList.contains('hidden');
+          if(open){box.classList.add('hidden'); box.innerHTML='';}
+          else{box.classList.remove('hidden'); box.innerHTML=ex.render();}
+        };
+        container.appendChild(el);
+      });
+    }
+    renderExamples();
+
+    // Practice state
+    let state = { q:null, method:'round10', level:'2d', score:0, total:0, locked:false };
+
+    const scoreEl=document.getElementById('score');
+    const totalEl=document.getElementById('total');
+    const feedbackEl=document.getElementById('feedback');
+
+    function animateFeedback(kind){
+      feedbackEl.classList.remove('shake','pop');
+      void feedbackEl.offsetWidth;
+      feedbackEl.classList.add(kind==='good'?'pop':'shake');
+    }
+    function setFeedback(html, kind){ feedbackEl.innerHTML=html; animateFeedback(kind); }
+
+    function buildChoices(correct){
+      // create 2 distractors far-ish but plausible
+      const d1 = correct + randInt(20, 60) * (Math.random()<0.5 ? 1 : -1);
+      const d2 = correct + randInt(40, 120) * (Math.random()<0.5 ? 1 : -1);
+      const pool = [correct, Math.max(0,d1), Math.max(0,d2)];
+      // ensure unique
+      const uniq = [...new Set(pool.map(x=>Math.max(0,Math.trunc(x))))];
+      while(uniq.length<3){
+        uniq.push(Math.max(0, correct + randInt(10,90)));
+      }
+      // shuffle
+      for(let i=uniq.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [uniq[i],uniq[j]]=[uniq[j],uniq[i]];
+      }
+      return uniq.slice(0,3);
+    }
+
+    function renderProblem(){
+      const q=state.q;
+      document.getElementById('badge').textContent =
+        (state.method==='round10' ? 'تقريب لأقرب عشرة' : 'أعداد متناغمة') + ' • ' + (state.level==='2d'?'رقمين':'٣ أرقام');
+
+      const problemArea=document.getElementById('problemArea');
+      problemArea.innerHTML=`
+        <div class="flex flex-col items-center gap-4">
+          <div class="text-slate-700 font-bold">قدّري ناتج الطرح:</div>
+          <div class="flex items-center gap-4" dir="ltr">
+            <div class="digit-box border-pink-500 text-slate-800">${toArabic(q.a)}</div>
+            <div class="text-6xl font-extrabold text-pink-600">−</div>
+            <div class="digit-box border-pink-500 text-slate-800">${toArabic(q.b)}</div>
+          </div>
+          <div class="w-full h-1 rounded-full bg-pink-500"></div>
+        </div>
+      `;
+
+      // compute correct estimate for chosen method
+      const correct = (state.method==='round10')
+        ? (round10(q.a) - round10(q.b))
+        : (harmonicEstimate(q.a,q.b).est);
+
+      state.correct = correct;
+
+      const choices = buildChoices(correct);
+      const box=document.getElementById('choices');
+      box.innerHTML='';
+      choices.forEach(val=>{
+        const div=document.createElement('div');
+        div.className='choice bg-white border-slate-200 text-slate-800 text-center';
+        div.innerHTML = `<div class="text-3xl">${toArabic(val)}</div>`;
+        div.onclick=()=>selectChoice(val);
+        box.appendChild(div);
+      });
+
+      state.locked=false;
+      setFeedback('اختاري أحد الخيارات. ويمكنك الضغط على <b>أظهر الشرح</b> لرؤية خطوات التقدير.', 'good');
+    }
+
+    function selectChoice(val){
+      if (state.locked) return;
+      state.locked=true;
+
+      const correct = (val === state.correct);
+      state.total += 1;
+      if (correct) state.score += 1;
+
+      scoreEl.textContent = toArabic(state.score);
+      totalEl.textContent = toArabic(state.total);
+
+      if (correct){
+        setFeedback(`
+          <div class="font-extrabold text-emerald-700 text-lg">أحسنتِ! تقدير صحيح 🎉</div>
+          <div class="mt-2"><b>التقدير الصحيح:</b> ${toArabic(state.correct)}</div>
+          <div class="mt-3">${explain(state.q, state.method)}</div>
+        `,'good');
+      } else {
+        setFeedback(`
+          <div class="font-extrabold text-rose-700 text-lg">قريبة.. لكن ليست الصحيحة 💡</div>
+          <div class="mt-2"><b>اختيارك:</b> ${toArabic(val)}</div>
+          <div><b>التقدير الصحيح:</b> ${toArabic(state.correct)}</div>
+          <div class="mt-3">${explain(state.q, state.method)}</div>
+        `,'bad');
+      }
+    }
+
+    function newQuestion(){
+      state.method = document.getElementById('method').value;
+      state.level = document.getElementById('level').value;
+      state.q = genProblem(state.level);
+      renderProblem();
+    }
+
+    function showExplain(){
+      setFeedback(explain(state.q, state.method), 'good');
+    }
+
+    // Bind practice controls
+    document.getElementById('method').onchange = newQuestion;
+    document.getElementById('level').onchange = newQuestion;
+    document.getElementById('btnNew').onclick = newQuestion;
+    document.getElementById('btnShow').onclick = showExplain;
+
+    // init
+    scoreEl.textContent = toArabic(0);
+    totalEl.textContent = toArabic(0);
+    newQuestion();
+    setTab('tab-learn');
+  </script>
+</body>
+</html>
